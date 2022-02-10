@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMM</title>
+
+    <!-- leaflet library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- costum css -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+
+        #map {
+            position: absolute;
+            left: 1rem;
+            width: 65%;
+            height: 90%;
+            margin: 2rem auto;
+            border-radius: 6px;
+            box-shadow: 2px 1px #cfcbcb;
+        }
+
+
+        #locArea {
+            position: absolute;
+            right: 5rem;
+            width: 25%;
+            max-height: 70%;
+            margin: 8rem auto;
+            overflow-y: auto;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #4285F4;
+        }
+
+        #locList li {
+            padding: 2rem 1rem;
+            border-radius: 3px;
+        }
+
+        #locList li:nth-child(odd) {
+            background-color: rgb(242, 252, 255);
+        }
+
+        #buttons {
+            position: absolute;
+            right: 5rem;
+            top: 3rem;
+        }
+
+        #deleteAllBtn {
+            padding: .8rem;
+            background-color: #ff4444;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        #deleteAllBtn:hover {
+            background-color: #CC0000;
+            cursor: pointer;
+        }
+
+        #saveBtn {
+            padding: .8rem;
+            background-color: #4285F4;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        #saveBtn:hover {
+            background-color: #0d47a1;
+            cursor: pointer;
+        }
+
+        #addLocBtn {
+            padding: .8rem;
+            background-color: #33b5e5;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        #addLocBtn:hover {
+            background-color: #0099CC;
+            cursor: pointer;
+        }
+
+        #downloadJsonBtn {
+            padding: .8rem;
+            background-color: #ffbb33;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        #downloadJsonBtn:hover {
+            background-color: #FF8800;
+            cursor: pointer;
+        }
+
+        .markUpBtn {
+            padding: .5rem;
+            background-color: #2BBBAD;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .markUpBtn:hover {
+            background-color: #00695c;
+            cursor: pointer;
+        }
+
+        .deleteLocationBtn {
+            padding: .5rem;
+            background-color: #ff4444;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .deleteLocationBtn:hover {
+            background-color: #CC0000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div id="locArea">
+        <h1>Location List</h1>
+        <ul id="locList"></ul>
+    </div>
+
+    <div id="buttons">
+        <button id="saveBtn" onclick="postJson()">Save Changes</button>
+        <button id="addLocBtn" onclick="addLocation()">Add Location</button>
+        <a href="/download-json"><button id="downloadJsonBtn">Download File</button></a>
+        <button id="deleteAllBtn" onclick="deleteAll()">Delete All</button>
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+
+</body>
+
+</html>
